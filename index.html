@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" />
+    <title>Losowy żart Chucka</title>
+    <style>
+        html{
+            background: url("https://cdn.pixabay.com/photo/2019/09/05/09/46/africa-4453630_960_720.jpg") no-repeat center fixed;
+            background-size: cover;
+        }
+        div{
+            justify-content: center;
+            width:50%;
+            margin:50px auto;
+            padding: 50px;
+            border: solid 10px orange;
+            border-radius: 10px;
+            font-size: 35px;
+            font-family: roboto;
+            text-align: center;
+            background-color: transparent;   
+         }
+            
+
+        #theme{
+          text-transform: uppercase;
+          
+
+        }
+
+        img{
+            height: 100px;
+        }
+
+        #joke{
+            background: linear-gradient(rgb(180, 180, 190),rgba(20, 18, 68, 0.281));
+        }
+
+        button{
+            margin: 0 auto;
+            width: 250px;
+            height: 80px;
+            color: white;
+            font-size: 20px;
+            background-color: orange;
+            border: solid 10px orange;
+            border-radius: 10px;
+            transition-duration: 0.6s;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color:beige;
+            color: orange;
+        }
+
+        #button{
+            border: none;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    <div id="theme">
+        <img src="https://cdn.pixabay.com/photo/2021/03/17/18/06/hat-6102974_960_720.png" alt="">
+        <p>Chuck's random joke <i class="far fa-laugh-squint"></i></p>
+    </div>
+    <div id="button"><button type="submit"  onClick="refreshPage()">Click for another joke :)</button>
+    </div>
+    <div id="joke">
+
+    </div>
+    <script>
+    window.onload = function(){
+        console.log("hello");
+
+        fetch("https://api.chucknorris.io/jokes/random")
+        .then( response => response.json()) 
+        .then( data => dataReady(data));
+    }
+
+    function dataReady(data){
+        console.log(data.value); 
+
+        document.getElementById("joke").innerHTML = data.value;
+    }
+
+    function refreshPage(){
+        window.location.reload();
+        }
+
+    </script>
+</body>
+</html>
